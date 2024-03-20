@@ -1,0 +1,12 @@
+<button class="btn btn-primary"
+(click)="changeColor()"> 
+Toogle active
+</button> 
+<br>
+ <span  [ngClass]="{'redText':  active}">Hello</span> 
+<h3>active:{{value}}</h3>
+
+<h4>NgStyle</h4>
+
+<BR>
+  <span  [ngStyle]="{'color':  active?'red':'black'}">Hello</span> 
