@@ -12,10 +12,8 @@ export class AppComponent {
   active = true; 
   changeColor() { 
       this.active = !this.active; 
-      if (!this.active) { 
-          this.value = 'false'; 
-      } else { 
-          this.value = 'true'; 
-      } 
+      this.value = this.active ? 'true' : 'false';
+
+
   } 
 }
