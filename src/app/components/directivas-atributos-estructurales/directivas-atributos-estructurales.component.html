@@ -1,0 +1,17 @@
+<h4>NgFor</h4>
+<ul *ngFor="let item of arrayStrings">
+  <li>{{ item }}</li>
+</ul>
+
+<h4>NgIf</h4>
+<ul *ngFor="let item of arrayStrings">
+  <li *ngIf="item != 'B'">{{ item }}</li>
+</ul>
+
+<h4>NgSwitch</h4>
+<ul *ngFor="let item of arrayStrings" [ngSwitch]="item">
+  <li *ngSwitchCase="'A'">1</li>
+  <li *ngSwitchCase="'B'">2</li>
+  <li *ngSwitchCase="'C'">3</li>
+</ul>
+
