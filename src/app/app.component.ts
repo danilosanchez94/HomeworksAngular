@@ -7,10 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'HomeworkAngularDs';
-  value = 'true';
-  active = true;
-  changeColor() {
-    this.active = !this.active;
-    this.value = this.active ? 'true' : 'false';
-  }
 }
