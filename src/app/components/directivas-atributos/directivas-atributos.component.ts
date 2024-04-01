@@ -6,8 +6,8 @@ import { Component } from '@angular/core';
   styleUrl: './directivas-atributos.component.scss'
 })
 export class DirectivasAtributosComponent {
-  value = 'true';
-  active = true;
+  value:string = 'true';
+  active: boolean = true;
   changeColor() {
     this.active = !this.active;
     this.value = this.active ? 'true' : 'false';
