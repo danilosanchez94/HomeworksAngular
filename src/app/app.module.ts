@@ -4,15 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DirectivasAtributosComponent } from './components/directivas-atributos/directivas-atributos.component';
-
+import { DataBindingComponent } from './components/data-binding/data-binding.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    DirectivasAtributosComponent
+    DirectivasAtributosComponent,
+    DataBindingComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
