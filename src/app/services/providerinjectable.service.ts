@@ -2,13 +2,9 @@ import { Injectable } from '@angular/core';
 import { ProviderinjectableModule } from '../providerinjectable.module';
 
 @Injectable({
-  providedIn: ProviderinjectableModule
+  providedIn: ProviderinjectableModule,
 })
 export class ProviderinjectableService {
-
-  constructor() { }
-  getValue(){
-    return "TestService";
-  }
-
+  list: string[] = ['one', 'two'];
+  constructor() {}
 }

@@ -4,19 +4,16 @@ import { RootInjectable2Component } from './components/root-injectable2/root-inj
 import { RouterModule, Routes } from '@angular/router';
 import { RootInjectable1Component } from './components/root-injectable1/root-injectable1.component';
 
-const routes : Routes=[{
-  path:'',
-  component:RootInjectable2Component,
-  outlet:"root2"
-}]
+const routes: Routes = [
+  {
+    path: '',
+    component: RootInjectable2Component,
+    outlet: 'root2',
+  },
+];
 
 @NgModule({
-  declarations: [
-    RootInjectable2Component
-  ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes)
-  ]
+  declarations: [RootInjectable2Component],
+  imports: [CommonModule, RouterModule.forChild(routes)],
 })
-export class RootInjectable2Module { }
+export class RootInjectable2Module {}

@@ -9,18 +9,15 @@ import { RootInjectable2Module } from './root-injectable2.module';
 import { RootInjectable1Module } from './root-injectable1.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DirectivasAtributosComponent
-  ],
+  declarations: [AppComponent, DirectivasAtributosComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ProviderinjectableModule,
     RootInjectable1Module,
-    RootInjectable2Module
+    RootInjectable2Module,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
