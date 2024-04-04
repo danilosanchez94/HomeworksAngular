@@ -1,11 +1,10 @@
 import { Directive, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[capitalize]'
+  selector: '[capitalize]',
 })
 export class CapitalizeDirectiveDirective {
-
   constructor(elem: ElementRef) {
-    elem.nativeElement.style.textTransform='uppercase';
-   }
+    elem.nativeElement.style.textTransform = 'uppercase';
+  }
 }

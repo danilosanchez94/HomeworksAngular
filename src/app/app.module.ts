@@ -8,20 +8,16 @@ import { DirectivasAtributosEstructuralesComponent } from './components/directiv
 import { CapitalizeDirectiveDirective } from './directivas/capitalize-directive.directive';
 import { CapitalizeDirectivasComponent } from './components/capitalize-directivas/capitalize-directivas.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     DirectivasAtributosComponent,
     DirectivasAtributosEstructuralesComponent,
     CapitalizeDirectiveDirective,
-    CapitalizeDirectivasComponent
+    CapitalizeDirectivasComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
