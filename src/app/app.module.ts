@@ -7,7 +7,9 @@ import { DirectivasAtributosComponent } from './components/directivas-atributos/
 import { DirectivasAtributosEstructuralesComponent } from './components/directivas-atributos-estructurales/directivas-atributos-estructurales.component';
 import { CapitalizeDirectiveDirective } from './directivas/capitalize-directive.directive';
 import { CapitalizeDirectivasComponent } from './components/capitalize-directivas/capitalize-directivas.component';
-
+import { SimplerutaComponent } from './components/simpleruta/simpleruta.component';
+import { RouterModule } from '@angular/router';
+import { DynamicrouteComponent } from './components/dynamicroute/dynamicroute.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,6 +17,8 @@ import { CapitalizeDirectivasComponent } from './components/capitalize-directiva
     DirectivasAtributosEstructuralesComponent,
     CapitalizeDirectiveDirective,
     CapitalizeDirectivasComponent,
+    SimplerutaComponent,
+    DynamicrouteComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
