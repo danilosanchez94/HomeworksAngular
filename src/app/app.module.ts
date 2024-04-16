@@ -11,6 +11,9 @@ import { MyFirstModuleModule } from './my-first-module/my-first-module.module';
 import { PipesComponent } from './components/pipes/pipes.component';
 import { CurrencyPipe } from '@angular/common';
 import { UppercasecustomPipe } from './uppercasecustom.pipe';
+import { ProviderinjectableModule } from './providerinjectable.module';
+import { RootInjectable2Module } from './root-injectable2.module';
+import { RootInjectable1Module } from './root-injectable1.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,14 @@ import { UppercasecustomPipe } from './uppercasecustom.pipe';
     PipesComponent,
     UppercasecustomPipe,
   ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ProviderinjectableModule,
+    RootInjectable1Module,
+    RootInjectable2Module,
+  ],
+  providers: [],
   imports: [BrowserModule, AppRoutingModule, MyFirstModuleModule],
   providers: [CurrencyPipe, UppercasecustomPipe],
   bootstrap: [AppComponent],
