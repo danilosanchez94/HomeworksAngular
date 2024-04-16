@@ -7,6 +7,7 @@ import { DirectivasAtributosComponent } from './components/directivas-atributos/
 import { DirectivasAtributosEstructuralesComponent } from './components/directivas-atributos-estructurales/directivas-atributos-estructurales.component';
 import { CapitalizeDirectiveDirective } from './directivas/capitalize-directive.directive';
 import { CapitalizeDirectivasComponent } from './components/capitalize-directivas/capitalize-directivas.component';
+import { MyFirstModuleModule } from './my-first-module/my-first-module.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { CapitalizeDirectivasComponent } from './components/capitalize-directiva
     CapitalizeDirectiveDirective,
     CapitalizeDirectivasComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, MyFirstModuleModule],
   providers: [],
   bootstrap: [AppComponent],
 })
