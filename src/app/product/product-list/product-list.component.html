@@ -32,7 +32,9 @@
                   
                     <div mat-subheader>ProductoLabel</div>
                     <mat-card
-                      *ngFor="let filteredProd of filteredProducts"
+                      *ngFor="let filteredProd of filteredProducts | slice
+                      : (pagination.currentPage - 1) * pagination.pageSize
+                      : pagination.currentPage * pagination.pageSize"
                       
                     >
                     <mat-card-content>
@@ -56,7 +58,13 @@
                     <mat-card-content>No hay productos</mat-card-content>
                   </mat-card>
                 </ng-template>
-              
+                <app-pagination
+  #pagination
+  [collectionSize]="filteredProducts.length"
+  [pageSize]="5"
+  [firstLastButtons]="false"
+  [maxSize]="2"
+></app-pagination>
             </ng-container>
         
             <!-- Loading -->
