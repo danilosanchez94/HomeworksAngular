@@ -15,6 +15,9 @@ import { ProviderinjectableModule } from './providerinjectable.module';
 import { RootInjectable2Module } from './root-injectable2.module';
 import { RootInjectable1Module } from './root-injectable1.module';
 
+import { SimplerutaComponent } from './components/simpleruta/simpleruta.component';
+import { RouterModule } from '@angular/router';
+import { DynamicrouteComponent } from './components/dynamicroute/dynamicroute.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +27,8 @@ import { RootInjectable1Module } from './root-injectable1.module';
     CapitalizeDirectivasComponent,
     PipesComponent,
     UppercasecustomPipe,
+    SimplerutaComponent,
+    DynamicrouteComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +37,7 @@ import { RootInjectable1Module } from './root-injectable1.module';
     ProviderinjectableModule,
     RootInjectable1Module,
     RootInjectable2Module,
+
   ],
   providers: [CurrencyPipe, UppercasecustomPipe],
   bootstrap: [AppComponent],
