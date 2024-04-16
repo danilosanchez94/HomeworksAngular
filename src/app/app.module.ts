@@ -27,6 +27,8 @@ import { DynamicrouteComponent } from './components/dynamicroute/dynamicroute.co
     CapitalizeDirectivasComponent,
     PipesComponent,
     UppercasecustomPipe,
+    SimplerutaComponent,
+    DynamicrouteComponent
   ],
   imports: [
     BrowserModule,
@@ -35,8 +37,7 @@ import { DynamicrouteComponent } from './components/dynamicroute/dynamicroute.co
     ProviderinjectableModule,
     RootInjectable1Module,
     RootInjectable2Module,
-    SimplerutaComponent,
-    DynamicrouteComponent,
+
   ],
   providers: [CurrencyPipe, UppercasecustomPipe],
   bootstrap: [AppComponent],
