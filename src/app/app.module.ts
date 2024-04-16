@@ -28,12 +28,11 @@ import { RootInjectable1Module } from './root-injectable1.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MyFirstModuleModule,
     ProviderinjectableModule,
     RootInjectable1Module,
     RootInjectable2Module,
   ],
-  providers: [],
-  imports: [BrowserModule, AppRoutingModule, MyFirstModuleModule],
   providers: [CurrencyPipe, UppercasecustomPipe],
   bootstrap: [AppComponent],
 })
