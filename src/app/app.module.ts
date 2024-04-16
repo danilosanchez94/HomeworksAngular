@@ -8,6 +8,9 @@ import { DirectivasAtributosEstructuralesComponent } from './components/directiv
 import { CapitalizeDirectiveDirective } from './directivas/capitalize-directive.directive';
 import { CapitalizeDirectivasComponent } from './components/capitalize-directivas/capitalize-directivas.component';
 import { MyFirstModuleModule } from './my-first-module/my-first-module.module';
+import { PipesComponent } from './components/pipes/pipes.component';
+import { CurrencyPipe } from '@angular/common';
+import { UppercasecustomPipe } from './uppercasecustom.pipe';
 
 @NgModule({
   declarations: [
@@ -16,9 +19,11 @@ import { MyFirstModuleModule } from './my-first-module/my-first-module.module';
     DirectivasAtributosEstructuralesComponent,
     CapitalizeDirectiveDirective,
     CapitalizeDirectivasComponent,
+    PipesComponent,
+    UppercasecustomPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, MyFirstModuleModule],
-  providers: [],
+  providers: [CurrencyPipe, UppercasecustomPipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
