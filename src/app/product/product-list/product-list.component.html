@@ -1,0 +1,69 @@
+<!-- ••[1]••••••••••••••••••••••••• user-list.component.html •••••••••••••••••••••••••••••• -->
+
+<mat-card *ngIf="route.children.length === 0">
+  <mat-card-header>
+    <mat-card-title>Productos</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Productos 2</p>
+
+    <!-- Filter 
+    <mat-form-field>
+      <mat-label>{{ filterLabel }}</mat-label>
+      <input #filterRef matInput type="text" [(ngModel)]="filterRef.value" />
+      <button
+        #clearFilterRef
+        [ngStyle]="{
+          opacity: filterRef.value ? 1 : 0,
+          pointerEvents: filterRef.value ? 'all' : 'none'
+        }"
+        matSuffix
+        mat-icon-button
+        (click)="filterRef.value ? (filterRef.value = '') : null"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>-->
+
+    <ng-container 
+    *ngIf="products$ | async as filteredProducts; else loadingRef"
+    >
+
+                  
+                    <div mat-subheader>ProductoLabel</div>
+                    <mat-card
+                      *ngFor="let filteredProd of filteredProducts"
+                      
+                    >
+                    <mat-card-content>
+                      <div matListItemTitle>
+                        {{ filteredProd.title}}
+                      </div>
+                      <img mat-card-image src="{{filteredProd.photos[0]}}">
+                    </mat-card-content>
+                    <mat-card-footer>
+                      <div >
+                        <button mat-icon-button [routerLink]="[filteredProd.id]">
+                          <mat-icon>open_in_new</mat-icon>
+                        </button>
+                      </div>
+                    </mat-card-footer>
+                 </mat-card>
+  
+                <!-- No albums -->
+                <ng-template #noProductsRef>
+                  <mat-card>
+                    <mat-card-content>No hay productos</mat-card-content>
+                  </mat-card>
+                </ng-template>
+              
+            </ng-container>
+        
+            <!-- Loading -->
+            <ng-template #loadingRef>
+              <mat-spinner color="accent" [diameter]="40"></mat-spinner>
+            </ng-template>
+          </mat-card-content>
+        </mat-card>
+        <router-outlet
+        ></router-outlet>

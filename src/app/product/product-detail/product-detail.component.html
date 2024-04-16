@@ -1,0 +1,37 @@
+<!-- ••[1]••••••••••••••••••••••••• album-detail.component.html •••••••••••••••••••••••••••••• -->
+
+<mat-card *ngIf="productDetail$ | async as productDetail; else loadingRef">
+    <mat-card-header>
+      <mat-card-title> productDetail.length</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item><strong>Titulo:</strong> {{ productDetail.title }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item
+          ><strong>Title:</strong> {{ productDetail.id }}</mat-list-item
+        >
+        <mat-divider></mat-divider>
+        <mat-list-item
+          ><strong>UserId:</strong> {{ productDetail.prices[0] }}</mat-list-item
+        >
+      </mat-list>
+    </mat-card-content>
+    <mat-card-footer>
+        <div *ngFor="let imges of productDetail.photos">
+  
+            <img mat-card-image src="{{imges}}">
+        </div>
+    
+        
+    </mat-card-footer>
+
+  </mat-card>
+  
+  <ng-template #loadingRef>
+    <div class="loading">
+      <mat-spinner color="accent" [diameter]="40"></mat-spinner>
+     Loading
+    </div>
+  </ng-template>
+  
