@@ -12,6 +12,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 const AngularMaterialModules: Array<Type<unknown>> = [
   LayoutModule,
@@ -26,6 +27,7 @@ const AngularMaterialModules: Array<Type<unknown>> = [
   MatSlideToggleModule,
   MatTabsModule,
   MatToolbarModule,
+  MatCheckboxModule
 ];
 
 @NgModule({

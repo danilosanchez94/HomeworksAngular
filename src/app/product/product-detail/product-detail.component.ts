@@ -21,6 +21,8 @@ export class ProductDetailComponent implements AfterViewInit{
 
   public ngAfterViewInit(): void {
     this.activatedRoute.params.subscribe((params: Params): void => {
+      var product=this.productsService.selectAlbum(params['id']);
+      
       return this.productsService.selectAlbum(params['id']);
     });
   }

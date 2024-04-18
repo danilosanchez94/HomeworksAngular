@@ -12,8 +12,12 @@
           ><strong>Title:</strong> {{ productDetail.id }}</mat-list-item
         >
         <mat-divider></mat-divider>
-        <mat-list-item
-          ><strong>UserId:</strong> {{ productDetail.prices[0] }}</mat-list-item
+        <mat-list-item ><strong>precio:</strong> <span [ngClass]="{ underline: productDetail.offerDiscount!=null}">{{ productDetail.prices["S"] | redondeo   | currency:'MXN'  }}</span>
+          <button mat-flat-button color="primary" class="buttonOffer" *ngIf="productDetail.offerDiscount!=null">{{ productDetail.prices["S"] -(productDetail.offerDiscount/100) | redondeo   | currency:'MXN'}}</button>
+          </mat-list-item
+        >
+        <mat-list-item 
+          ><strong>descuento:</strong> {{ productDetail.offerDiscount}}</mat-list-item
         >
       </mat-list>
     </mat-card-content>

@@ -5,17 +5,18 @@ export class ProductData {
     {
       id: '1',
       title: 'product1',
-      prices: { S: 20, M: 40 },
+      prices: { S: 20.40, M: 40 },
       photos: [
         'https://api.slingacademy.com/public/sample-photos/1.jpeg',
         'https://api.slingacademy.com/public/sample-photos/2.jpeg',
       ],
       description: 'product1 Description',
+      offerDiscount:15
     },
     {
       id: '2',
       title: 'product3',
-      prices: { S: 23, M: 43 },
+      prices: { S: 23.54, M: 43 },
       photos: [
         'https://api.slingacademy.com/public/sample-photos/1.jpeg',
         'https://api.slingacademy.com/public/sample-photos/2.jpeg',
@@ -25,12 +26,13 @@ export class ProductData {
     {
       id: '3',
       title: 'product4',
-      prices: { S: 25, M: 43 },
+      prices: { S: 25.50, M: 43 },
       photos: [
         'https://api.slingacademy.com/public/sample-photos/1.jpeg',
         'https://api.slingacademy.com/public/sample-photos/2.jpeg',
       ],
       description: 'product1 Description',
+      offerDiscount:10
     },
     {
       id: '4',
@@ -51,6 +53,7 @@ export class ProductData {
         'https://api.slingacademy.com/public/sample-photos/2.jpeg',
       ],
       description: 'product1 Description',
+      offerDiscount:10
     },
     {
       id: '7',

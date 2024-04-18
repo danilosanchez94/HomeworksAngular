@@ -24,9 +24,30 @@
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>-->
-
+    <mat-form-field>
+      <mat-label>Filtros </mat-label>
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="filterValue"
+        (ngModelChange)="filterChangeHandler($event)"
+      />
+      <button
+        *ngIf="filterValue"
+        matSuffix
+        mat-icon-button
+        (click)="filterValue = ''; filterChangeHandler('')"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <mat-checkbox class="example-margin"
+    [(ngModel)]="offerBool"
+    (change)="offers($event.checked)">
+    Ofertas
+</mat-checkbox>
     <ng-container 
-    *ngIf="products$ | async as filteredProducts; else loadingRef"
+    *ngIf="filteredProduct$ | async as filteredProducts; else loadingRef"
     >
 
                   

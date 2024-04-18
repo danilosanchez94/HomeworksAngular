@@ -11,6 +11,7 @@ export class ProductsService {
   private productsUrl: string = 'api/products';
   private http: HttpClient = inject(HttpClient);
   private productSelectedSubject$$: Subject<product_Id> = new Subject<product_Id>();
+
   constructor() { }
 
   private productSelected$: Observable<product_Id> =
