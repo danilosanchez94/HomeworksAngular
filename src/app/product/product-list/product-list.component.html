@@ -1,6 +1,7 @@
 <!-- ••[1]••••••••••••••••••••••••• user-list.component.html •••••••••••••••••••••••••••••• -->
 
 <mat-card *ngIf="route.children.length === 0">
+  <button mat-raised-button (click)="openDialog()">Click me</button>
   <mat-card-header>
     <mat-card-title>Productos</mat-card-title>
   </mat-card-header>

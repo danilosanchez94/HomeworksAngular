@@ -42,4 +42,6 @@ public readonly productDetail$: Observable<Product> = combineLatest({
   public selectAlbum(id: product_Id): void {
     this.productSelectedSubject$$.next(id);
   }
+
+
 }

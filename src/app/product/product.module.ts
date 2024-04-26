@@ -8,6 +8,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { PaginationComponent } from './pagination/pagination.component';
 import { RedondeoPipe } from './redondeo.pipe';
 import { FormsModule } from '@angular/forms';
+import { DialogCreateProductComponent } from './dialog-create-product/dialog-create-product.component';
 
 
 @NgModule({
@@ -15,7 +16,7 @@ import { FormsModule } from '@angular/forms';
     ProductListComponent,
     ProductDetailComponent,
     PaginationComponent,
-    RedondeoPipe
+    RedondeoPipe,
   ],
   imports: [
     CommonModule,
