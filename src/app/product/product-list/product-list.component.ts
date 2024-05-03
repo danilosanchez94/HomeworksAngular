@@ -39,7 +39,6 @@ export class ProductListComponent implements OnInit  {
     this.AddNew$.pipe(startWith(null))
   ).pipe(
     map(([products, offer, filter, newItem]: [Array<Product>,boolean , string,Product| null]): Array<Product> => {
-      debugger;
       console.log(offer)
       console.log(filter)
       filter = filter.toLowerCase();
@@ -75,7 +74,6 @@ export class ProductListComponent implements OnInit  {
   });
 
     dialogRef.afterClosed().subscribe(result => {
-      debugger;
       const keyValueObject: { [tag: string]: number } = result.prices.reduce((acc: { [x: string]: number; }, obj: { tag: string; price: number; }) => {
         acc[obj.tag] = Number(obj.price);
         return acc;

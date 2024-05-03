@@ -9,6 +9,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { RedondeoPipe } from './redondeo.pipe';
 import { FormsModule } from '@angular/forms';
 import { DialogCreateProductComponent } from './dialog-create-product/dialog-create-product.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { DialogCreateProductComponent } from './dialog-create-product/dialog-cre
     CommonModule,
     ProductRoutingModule,
     AngularmaterialModule,
-    FormsModule
+    FormsModule,
+    FlexLayoutModule
   ]
 })
 export class ProductModule { }

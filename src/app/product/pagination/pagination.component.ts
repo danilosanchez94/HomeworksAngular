@@ -3,9 +3,9 @@ import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 @Component({
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
-  styleUrl: './pagination.component.scss'
+  styleUrl: './pagination.component.scss',
 })
-export class PaginationComponent implements OnInit{
+export class PaginationComponent implements OnInit {
   /** The total number of records */
   @Input()
   collectionSize = 0;
@@ -45,19 +45,13 @@ export class PaginationComponent implements OnInit{
   ngOnChanges(changes: SimpleChanges) {
     this.totalPages = new Array(Math.ceil(this.collectionSize / this.pageSize));
   }
-
-  /** Set page number */
   selectPageNumber(pageNumber: number) {
     this.currentPage = pageNumber;
   }
-
-  /** Set next page number */
   next() {
     const nextPage = this.currentPage + 1;
     nextPage <= this.totalPages.length && this.selectPageNumber(nextPage);
   }
-
-  /** Set previous page number */
   previous() {
     const previousPage = this.currentPage - 1;
     previousPage >= 1 && this.selectPageNumber(previousPage);

@@ -1,12 +1,15 @@
-img{
-    object-fit: cover; /*this makes the image in src fit to the size specified below*/
-    width: 10%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
-    height: 80%;
-  }
-  .underline{
-    text-decoration: line-through;
-
-  }
-  .buttonOffer{
-    margin-left: 10px;
-  }
+img {
+  object-fit: cover; /*this makes the image in src fit to the size specified below*/
+  width: 30%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+  height: 50%;
+}
+.underline {
+  text-decoration: line-through;
+}
+.buttonOffer {
+  margin-left: 10px;
+}
+img {
+  float: left;
+  margin: 10px;
+}

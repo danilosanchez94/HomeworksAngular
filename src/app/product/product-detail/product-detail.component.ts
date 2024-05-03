@@ -7,22 +7,21 @@ import { Observable } from 'rxjs';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
-  styleUrl: './product-detail.component.scss'
+  styleUrl: './product-detail.component.scss',
 })
-export class ProductDetailComponent implements AfterViewInit{
-
+export class ProductDetailComponent implements AfterViewInit {
   public constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly productsService: ProductsService
   ) {}
 
-  protected productDetail$: Observable<Product> = this.productsService.productDetail$;
-
+  protected productDetail$: Observable<Product> =
+    this.productsService.productDetail$;
 
   public ngAfterViewInit(): void {
     this.activatedRoute.params.subscribe((params: Params): void => {
-      var product=this.productsService.selectAlbum(params['id']);
-      
+      var product = this.productsService.selectAlbum(params['id']);
+
       return this.productsService.selectAlbum(params['id']);
     });
   }

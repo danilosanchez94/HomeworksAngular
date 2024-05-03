@@ -10,15 +10,16 @@ import { AppData } from './app-data/app-data';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [BrowserModule, AppRoutingModule,AngularmaterialModule,HttpClientModule,FormsModule,
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    AngularmaterialModule,
+    HttpClientModule,
+    FormsModule,
     InMemoryWebApiModule.forRoot(AppData, { delay: 1000 }),
   ],
-  providers: [
-    provideAnimationsAsync()
-  ],
+  providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

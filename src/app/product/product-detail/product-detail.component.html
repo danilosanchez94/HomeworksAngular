@@ -1,41 +1,48 @@
-<!-- ••[1]••••••••••••••••••••••••• album-detail.component.html •••••••••••••••••••••••••••••• -->
-
 <mat-card *ngIf="productDetail$ | async as productDetail; else loadingRef">
-    <mat-card-header>
-      <mat-card-title> productDetail.length</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-list>
-        <mat-list-item><strong>Titulo:</strong> {{ productDetail.title }}</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item
-          ><strong>Title:</strong> {{ productDetail.id }}</mat-list-item
+  <mat-card-header>
+    <mat-card-title> Detalle Producto</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item
+        ><strong>Producto:</strong> {{ productDetail.title }}</mat-list-item
+      >
+      <mat-divider></mat-divider>
+      <mat-list-item
+        ><strong>Descripción:</strong>
+        {{ productDetail.description }}</mat-list-item
+      >
+      <mat-divider></mat-divider>
+      <mat-list-item
+        ><strong>Precio:</strong>
+        <span [ngClass]="{ underline: productDetail.offerDiscount != null }">{{
+          productDetail.prices["S"] | redondeo | currency : "MXN"
+        }}</span>
+        <button
+          mat-flat-button
+          color="primary"
+          class="buttonOffer"
+          *ngIf="productDetail.offerDiscount != null"
         >
-        <mat-divider></mat-divider>
-        <mat-list-item ><strong>precio:</strong> <span [ngClass]="{ underline: productDetail.offerDiscount!=null}">{{ productDetail.prices["S"] | redondeo   | currency:'MXN'  }}</span>
-          <button mat-flat-button color="primary" class="buttonOffer" *ngIf="productDetail.offerDiscount!=null">{{ productDetail.prices["S"] -(productDetail.offerDiscount/100) | redondeo   | currency:'MXN'}}</button>
-          </mat-list-item
-        >
-        <mat-list-item 
-          ><strong>descuento:</strong> {{ productDetail.offerDiscount}}</mat-list-item
-        >
-      </mat-list>
-    </mat-card-content>
-    <mat-card-footer>
-        <div *ngFor="let imges of productDetail.photos">
-  
-            <img mat-card-image src="{{imges}}">
-        </div>
-    
-        
-    </mat-card-footer>
-
-  </mat-card>
-
-  <ng-template #loadingRef>
-    <div class="loading">
-      <mat-spinner color="accent" [diameter]="40"></mat-spinner>
-     Loading
+          {{
+            productDetail.prices["S"] - productDetail.offerDiscount / 100
+              | redondeo
+              | currency : "MXN"
+          }}
+        </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+  <mat-card-footer>
+    <div *ngFor="let imges of productDetail.photos">
+      <img mat-card-image src="{{ imges }}" />
     </div>
-  </ng-template>
-  
+  </mat-card-footer>
+</mat-card>
+
+<ng-template #loadingRef>
+  <div class="loading">
+    <mat-spinner [diameter]="40"></mat-spinner>
+    Loading
+  </div>
+</ng-template>

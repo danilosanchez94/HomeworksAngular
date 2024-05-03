@@ -1,31 +1,11 @@
 <!-- ••[1]••••••••••••••••••••••••• user-list.component.html •••••••••••••••••••••••••••••• -->
 
-<mat-card *ngIf="route.children.length === 0">
-  <button mat-raised-button (click)="openDialog()">Click me</button>
-  <mat-card-header>
-    <mat-card-title>Productos</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <p>Productos 2</p>
 
-    <!-- Filter 
-    <mat-form-field>
-      <mat-label>{{ filterLabel }}</mat-label>
-      <input #filterRef matInput type="text" [(ngModel)]="filterRef.value" />
-      <button
-        #clearFilterRef
-        [ngStyle]="{
-          opacity: filterRef.value ? 1 : 0,
-          pointerEvents: filterRef.value ? 'all' : 'none'
-        }"
-        matSuffix
-        mat-icon-button
-        (click)="filterRef.value ? (filterRef.value = '') : null"
-      >
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>-->
-    <mat-form-field>
+<div *ngIf="route.children.length === 0">
+  
+  <h1>Productos</h1>
+  <button  class="btnAdd" mat-raised-button (click)="openDialog()" style="">Agregar Nuevo</button>
+    <mat-form-field class="inputFilter">
       <mat-label>Filtros </mat-label>
       <input
         matInput
@@ -42,58 +22,57 @@
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
-    <mat-checkbox class="example-margin"
-    [(ngModel)]="offerBool"
-    (change)="offers($event.checked)">
-    Ofertas
-</mat-checkbox>
-    <ng-container 
-    *ngIf="filteredProduct$ | async as filteredProducts; else loadingRef"
+    <mat-checkbox
+    color="primary"
+      class="example-margin"
+      [(ngModel)]="offerBool"
+      (change)="offers($event.checked)"
     >
-
-                  
-                    <div mat-subheader>ProductoLabel</div>
-                    <mat-card
-                      *ngFor="let filteredProd of filteredProducts | slice
-                      : (pagination.currentPage - 1) * pagination.pageSize
-                      : pagination.currentPage * pagination.pageSize"
-                      
-                    >
-                    <mat-card-content>
-                      <div matListItemTitle>
-                        {{ filteredProd.title}}
-                      </div>
-                      <img mat-card-image src="{{filteredProd.photos[0]}}">
-                    </mat-card-content>
-                    <mat-card-footer>
-                      <div >
-                        <button mat-icon-button [routerLink]="[filteredProd.id]">
-                          <mat-icon>open_in_new</mat-icon>
-                        </button>
-                      </div>
-                    </mat-card-footer>
-                 </mat-card>
-  
-                <!-- No albums -->
-                <ng-template #noProductsRef>
-                  <mat-card>
-                    <mat-card-content>No hay productos</mat-card-content>
-                  </mat-card>
-                </ng-template>
-                <app-pagination
-  #pagination
-  [collectionSize]="filteredProducts.length"
-  [pageSize]="5"
-  [firstLastButtons]="false"
-  [maxSize]="2"
-></app-pagination>
-            </ng-container>
-        
-            <!-- Loading -->
-            <ng-template #loadingRef>
-              <mat-spinner color="accent" [diameter]="40"></mat-spinner>
-            </ng-template>
-          </mat-card-content>
+      Ofertas
+    </mat-checkbox>
+    <ng-container
+      *ngIf="filteredProduct$ | async as filteredProducts; else loadingRef"
+    >
+      <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutGap="33px">
+      <mat-card class="card"
+        *ngFor="
+          let filteredProd of filteredProducts
+            | slice
+              : (pagination.currentPage - 1) * pagination.pageSize
+              : pagination.currentPage * pagination.pageSize
+        " fxFlex="30%" fxFlex.sm="100%" 
+      >
+      <mat-card-header>
+      <mat-card-title>{{ filteredProd.title }}</mat-card-title>
+      </mat-card-header> 
+      <img mat-card-image src="{{ filteredProd.photos[0] }}" />
+        <mat-card-footer>
+          <div class="footer">
+            <button  class="btnDetails" mat-icon-button [routerLink]="[filteredProd.id]">
+              <mat-icon>open_in_new</mat-icon>
+            </button>
+          </div>
+        </mat-card-footer>
+      </mat-card>
+ </div>
+      <ng-template #noProductsRef>
+        <mat-card>
+          <mat-card-content>No hay productos</mat-card-content>
         </mat-card>
-        <router-outlet
-        ></router-outlet>
+      </ng-template>
+      <app-pagination
+        #pagination
+        [collectionSize]="filteredProducts.length"
+        [pageSize]="5"
+        [firstLastButtons]="false"
+        [maxSize]="2"
+      ></app-pagination>
+    </ng-container>
+
+    <!-- Loading -->
+    <ng-template #loadingRef >
+      <mat-spinner  [diameter]="40"></mat-spinner>
+    </ng-template>
+
+</div>
+<router-outlet></router-outlet>

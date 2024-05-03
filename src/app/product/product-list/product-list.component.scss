@@ -1,3 +1,30 @@
-img{
-   width: 10rem;; 
+img {
+   width: 100%;
+   min-height: 300px;
+   height: 100%;
+   object-fit: cover;
+ 
+ }
+ .card{
+margin-bottom: 5%;
+ }
+ .btnDetails {
+   background-color: black;
+   color: white;
+ }
+.footer{
+   text-align: right   ;
+   margin: 10px;
+}
+.btnAdd{
+ float: right;
+ margin-right: 5%;
+ background-color: black!important;
+ color: white!important;
+}
+h1{
+   text-align: center;
+}
+.inputFilter{
+   width: 500px;
 }
