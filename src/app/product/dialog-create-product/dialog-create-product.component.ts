@@ -1,4 +1,8 @@
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -7,8 +11,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { NgTemplateOutlet } from '@angular/common';
-import { Component, Inject, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { CommonModule, NgTemplateOutlet } from '@angular/common';
+import {
+  Component,
+  Inject,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import {
   MatAccordion,
   MatExpansionModule,
@@ -25,13 +35,17 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { MAT_DIALOG_DATA,
-} from '@angular/material/dialog';
-import {  ProductFormGroup, ProductPhotosFormGroupT, ProductPricesFormGroupT, ProductFormGroupT} from './dialog-create-product.type';
-import { validateUnique } from '../../validatorUnique.validator';
-
-
-
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {
+  ProductFormGroup,
+  ProductPhotosFormGroupT,
+  ProductPricesFormGroupT,
+  ProductFormGroupT,
+} from './dialog-create-product.type';
+import {
+  atLeastOneItemValidator,
+  validateUnique,
+} from '../../validators.validator';
 
 @Component({
   standalone: true,
@@ -50,88 +64,73 @@ import { validateUnique } from '../../validatorUnique.validator';
     MatAccordion,
     FormsModule,
     MatDialogModule,
-
+    CommonModule,
   ],
   selector: 'app-dialog-create-product',
   templateUrl: './dialog-create-product.component.html',
   styleUrl: './dialog-create-product.component.scss',
-
-
-
 })
 export class DialogCreateProductComponent {
-  @ViewChild(MatAccordion, { static: true })
-  protected matAccordion!: MatAccordion;
+  constructor(public dialogRef: MatDialogRef<DialogCreateProductComponent>) {}
 
-  @ViewChildren(MatExpansionPanel)
-  protected matExpansionPanels!: QueryList<MatExpansionPanel>;
-
-    constructor(
-      public dialogRef: MatDialogRef<DialogCreateProductComponent>) {}
-      arrPhotos:string[]=[];
-    ngOnInit() {
-    }
-    private sentenceValidators: Array<ValidatorFn> = [
-      Validators.required,
-      Validators.minLength(2)
-
-    ];
-    private TagValidator: Array<ValidatorFn> = [
-      Validators.required,
-      Validators.minLength(1),
-      Validators.pattern("^[a-zA-Z0-9 ]+$")
-    ];
-
-    private getNewPhoto(): ProductPhotosFormGroupT {
-      return new FormControl('', {
-        nonNullable: true,
-        validators: validateUnique
-      });
-    }
- 
-    private getNewPrice(): ProductPricesFormGroupT {
-      return new FormGroup({
-        tag: new FormControl('', {
-          nonNullable: true,
-          validators: this.TagValidator,
-        }),
-      
-        price: new FormControl(0, {
-          nonNullable: true,
-          validators: Validators.required,
-        })
-      });
-    }
-   protected productForm: ProductFormGroup = new FormGroup({
-      
-   product: new FormGroup({
-      title: new FormControl('', {
-          nonNullable: true,
-          validators: this.sentenceValidators,
-        }),
-        description: new FormControl('', {
-          nonNullable: true,
-          validators: this.sentenceValidators,
-        }),
-      }),
-      prices: new FormArray(
-        [this.getNewPrice()],
-        Validators.minLength(1)
-      ),
-      photos: new FormArray([this.getNewPhoto()])
+  ngOnInit() {}
+  private sentenceValidators: Array<ValidatorFn> = [
+    Validators.required,
+    Validators.minLength(2),
+  ];
+  private TagValidator: Array<ValidatorFn> = [
+    Validators.pattern('^[a-zA-Z0-9 ]+$'),
+  ];
+  private getNewPhoto(): ProductPhotosFormGroupT {
+    return new FormControl('', {
+      nonNullable: true,
     });
-  
-    cancelar() {
-      this.dialogRef.close();
-    }
-    addPrice(): void {
+  }
+
+  private getNewPrice(): ProductPricesFormGroupT {
+    return new FormGroup({
+      tag: new FormControl('', {
+        nonNullable: true,
+        validators: this.TagValidator,
+      }),
+
+      price: new FormControl(0, {
+        nonNullable: true,
+      }),
+    });
+  }
+  protected productForm: ProductFormGroup = new FormGroup({
+    product: new FormGroup({
+      title: new FormControl('', {
+        nonNullable: true,
+        validators: this.sentenceValidators,
+      }),
+      description: new FormControl('', {
+        nonNullable: true,
+        validators: this.sentenceValidators,
+      }),
+    }),
+    prices: new FormArray([this.getNewPrice()], {
+      validators: [validateUnique, atLeastOneItemValidator],
+    }),
+    photos: new FormArray([this.getNewPhoto()], {
+      validators: [validateUnique, atLeastOneItemValidator],
+    }),
+  });
+
+  cancelar() {
+    this.dialogRef.close();
+  }
+  addPrice(): void {
     this.productForm.controls.prices.push(this.getNewPrice());
   }
-   removePrice(priceIndex: number): void {
+
+  removePrice(priceIndex: number): void {
     if (this.productForm.controls.prices.controls.length > 1) {
       this.productForm.controls.prices.removeAt(priceIndex);
     }
   }
+
   protected addPhoto(): void {
     this.productForm.controls.photos.push(this.getNewPhoto());
   }
@@ -141,10 +140,7 @@ export class DialogCreateProductComponent {
     }
   }
 
-
-onSubmit(){
-  this.dialogRef.close(this.productForm.value);
-}
-    
+  onSubmit() {
+    this.dialogRef.close(this.productForm.value);
   }
-
+}

@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
 import { DialogCreateProductComponent } from './dialog-create-product/dialog-create-product.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-
 @NgModule({
   declarations: [
     ProductListComponent,
@@ -24,7 +23,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     ProductRoutingModule,
     AngularmaterialModule,
     FormsModule,
-    FlexLayoutModule
-  ]
+    FlexLayoutModule,
+  ],
 })
-export class ProductModule { }
+export class ProductModule {}

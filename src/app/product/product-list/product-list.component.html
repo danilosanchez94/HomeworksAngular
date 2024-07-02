@@ -1,78 +1,87 @@
-<!-- ••[1]••••••••••••••••••••••••• user-list.component.html •••••••••••••••••••••••••••••• -->
-
-
 <div *ngIf="route.children.length === 0">
-  
   <h1>Productos</h1>
-  <button  class="btnAdd" mat-raised-button (click)="openDialog()" style="">Agregar Nuevo</button>
-    <mat-form-field class="inputFilter">
-      <mat-label>Filtros </mat-label>
-      <input
-        matInput
-        type="text"
-        [(ngModel)]="filterValue"
-        (ngModelChange)="filterChangeHandler($event)"
-      />
-      <button
-        *ngIf="filterValue"
-        matSuffix
-        mat-icon-button
-        (click)="filterValue = ''; filterChangeHandler('')"
-      >
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
-    <mat-checkbox
+  <button class="btnAdd" mat-raised-button (click)="openDialog()">
+    Agregar Nuevo
+  </button>
+  <mat-form-field class="inputFilter">
+    <mat-label>Filtros </mat-label>
+    <input
+      matInput
+      type="text"
+      [(ngModel)]="filterValue"
+      (ngModelChange)="filterChangeHandler($event)"
+    />
+    <button
+      *ngIf="filterValue"
+      matSuffix
+      mat-icon-button
+      (click)="filterValue = ''; filterChangeHandler('')"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-checkbox
     color="primary"
-      class="example-margin"
-      [(ngModel)]="offerBool"
-      (change)="offers($event.checked)"
+    class="example-margin"
+    [(ngModel)]="offerBool"
+    (change)="offers($event.checked)"
+  >
+    Ofertas
+  </mat-checkbox>
+  <ng-container
+    *ngIf="filteredProduct$ | async as filteredProducts; else loadingRef"
+  >
+    <div
+      fxLayout="row wrap"
+      fxLayout.xs="column"
+      fxLayoutAlign="space-around center"
+      fxLayoutGap="33px"
     >
-      Ofertas
-    </mat-checkbox>
-    <ng-container
-      *ngIf="filteredProduct$ | async as filteredProducts; else loadingRef"
-    >
-      <div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="space-around center" fxLayoutGap="33px">
-      <mat-card class="card"
+      <mat-card
+        class="card"
         *ngFor="
           let filteredProd of filteredProducts
             | slice
               : (pagination.currentPage - 1) * pagination.pageSize
               : pagination.currentPage * pagination.pageSize
-        " fxFlex="30%" fxFlex.sm="100%" 
+        "
+        fxFlex="30%"
+        fxFlex.sm="100%"
       >
-      <mat-card-header>
-      <mat-card-title>{{ filteredProd.title }}</mat-card-title>
-      </mat-card-header> 
-      <img mat-card-image src="{{ filteredProd.photos[0] }}" />
+        <mat-card-header>
+          <mat-card-title>{{ filteredProd.title }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{ filteredProd.photos[0] }}" />
         <mat-card-footer>
           <div class="footer">
-            <button  class="btnDetails" mat-icon-button [routerLink]="[filteredProd.id]">
+            <button
+              class="btnDetails"
+              mat-icon-button
+              [routerLink]="[filteredProd.id]"
+            >
               <mat-icon>open_in_new</mat-icon>
             </button>
           </div>
         </mat-card-footer>
       </mat-card>
- </div>
-      <ng-template #noProductsRef>
-        <mat-card>
-          <mat-card-content>No hay productos</mat-card-content>
-        </mat-card>
-      </ng-template>
-      <app-pagination
-        #pagination
-        [collectionSize]="filteredProducts.length"
-        [pageSize]="5"
-        [firstLastButtons]="false"
-        [maxSize]="2"
-      ></app-pagination>
-    </ng-container>
-
-    <!-- Loading -->
-    <ng-template #loadingRef >
-      <mat-spinner  [diameter]="40"></mat-spinner>
+    </div>
+    <ng-template #noProductsRef>
+      <mat-card>
+        <mat-card-content>No hay productos</mat-card-content>
+      </mat-card>
     </ng-template>
+    <app-pagination
+      #pagination
+      [collectionSize]="filteredProducts.length"
+      [pageSize]="5"
+      [firstLastButtons]="false"
+      [maxSize]="2"
+    ></app-pagination>
+  </ng-container>
 
+  <!-- Loading -->
+  <ng-template #loadingRef>
+    <mat-spinner [diameter]="40"></mat-spinner>
+  </ng-template>
 </div>
 <router-outlet></router-outlet>
