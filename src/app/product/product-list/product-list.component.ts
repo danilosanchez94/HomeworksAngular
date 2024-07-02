@@ -61,7 +61,6 @@ export class ProductListComponent implements OnInit {
         products = products.filter((product: Product): boolean =>
           offer ? product.offerDiscount != null : product != null
         );
-        debugger;
         products = products.filter((product: Product): boolean =>
           product.title.toLowerCase().includes(filter)
         );
